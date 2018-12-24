@@ -41,7 +41,7 @@ For convenience purposes,the installation wheel for the Raspberry Pi is already 
 
 ### Sensor Calibration
 First, the sensor needs to be calibrated for the trash can and receive a UUID.
-Run `setup.py` interactively and follow the instructions.
+Run `calibration.py` interactively and follow the instructions.
 
     (venv) % python3 setup.py
 
