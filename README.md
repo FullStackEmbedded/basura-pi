@@ -43,7 +43,7 @@ For convenience purposes,the installation wheel for the Raspberry Pi is already 
 First, the sensor needs to be calibrated for the trash can and receive a UUID.
 Run `calibration.py` interactively and follow the instructions.
 
-    (venv) % python3 setup.py
+    (venv) % python3 calibration.py
 
 ### Starting the Logger Daemon
 Now the logger daemon can be started.
