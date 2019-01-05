@@ -14,6 +14,11 @@ and connection to the internet.
 For an installation manual on how to install the ultrasonic ranger sensor, see
 [RpiAutonomousCar](https://github.com/FullStackEmbedded/RpiAutonomousCar) project.
 
+The Basura trash can uses the ultrasonic sensor driver contained in that repository.
+The `UltrasonicRanger` class from that package is used as a driver and is bundled in this repository under `wheels/fse2017_robot-v0.1.0.tar.gz`.
+This class expects the ultrasonic sensor's trigger pin to be attached to the Pi's GPIO pin 15 and the echo pin to be attached to GPIO 14.
+If you choose to use other pins, the class will need to be updated accordingly.
+
 ### Setting up a Virtual Environment
 Set up a virtual environment in the project directory, e.g. in your home directory under 
 `~/basura-trashcan`
