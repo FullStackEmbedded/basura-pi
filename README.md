@@ -49,3 +49,8 @@ Run `calibration.py` interactively and follow the instructions.
 Now the logger daemon can be started.
 
     (venv) % python3 main.py
+
+### Starting the Reporter
+The Reporter is currently not a daemon but can be started as follows:
+
+    (venv) % watch bash reporter.sh
