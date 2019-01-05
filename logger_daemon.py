@@ -4,7 +4,7 @@ import datetime
 import csv
 import json
 from warnings import warn
-from settings import SCHEDULE_INTERVAL, TRASH_CAN_INFORMATION_FILENAME, LOG_FILENAME, LOG_DIR
+from settings import SCHEDULE_INTERVAL, TRASH_CAN_INFORMATION_FILENAME, LOG_FILENAME, LOG_DIR, REP_FILENAME
 from fse2017_robot.drivers.ultrasonic_ranger import UltrasonicRanger
 
 
@@ -13,6 +13,7 @@ class LoggerDaemon:
     def __init__(self):
         self.log_dir = LOG_DIR
         self.log_filename = LOG_FILENAME
+        self.rep_filename = REP_FILENAME
         self.trash_can_information_filename = TRASH_CAN_INFORMATION_FILENAME
         self.schedule_interval = SCHEDULE_INTERVAL
 
@@ -88,3 +89,16 @@ class LoggerDaemon:
                 log_file.writelines(output_lines)
             print("Successfully deleted log entry with UUID " + uuid + ".")
 
+
+    def truncate_log(self):
+        '''
+        Reads the Reporter Log (RL, file: rep_file) to check for uuid in Fill State Log (FSL) existence.
+        If exists in RL, then delete uuid line in FSL.
+
+        :return:
+        '''
+
+        with open(self.log_dir + self.rep_filename, 'r') as rep_file:
+            next(rep_file)  # Skip first line
+            for line in rep_file:
+                    self.delete_from_log(line.strip())
