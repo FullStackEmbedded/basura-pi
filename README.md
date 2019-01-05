@@ -1,4 +1,4 @@
-# basura-pi
+# basura-trashcan
 A prototype trash can sensor for the FSE 2019 Basura Trash System, installed on a Raspberry Pi Zero WH.
 For this prototype, an ultrasonic ranger is used as distance sensor.
 
@@ -16,9 +16,9 @@ For an installation manual on how to install the ultrasonic ranger sensor, see
 
 ### Setting up a Virtual Environment
 Set up a virtual environment in the project directory, e.g. in your home directory under 
-`~/basura-pi`
+`~/basura-trashcan`
 
-    % cd basura-pi
+    % cd basura-trashcan
     % sudo apt install python3 python3-pip python3-tk
     % sudo pip3 install virtualenv
     % virtualenv venv -p python3
@@ -36,7 +36,7 @@ For convenience purposes,the installation wheel for the Raspberry Pi is already 
 
     (venv) % pip3 install wheels/fse2017_robot-v0.1.0.tar.gz
 
-      
+
 ## Usage
 
 ### Configuration
@@ -57,6 +57,10 @@ Note that this does not automatically spawn a child process; instead, the proces
 
     (venv) % python3 main.py
 
-The Reporter should also be executed similarly so that the fill states are reported and the log is truncated.
+### Starting the Reporter
+Before starting the Reporter, change the `BASURA_SERVER` variable to point to the right host and port that you want to communicate with.
+If not changed, this will interact with `localhost:8000`.
 
-    (venv) % ./reporter.sh
+The Reporter is currently not a daemon but can be started as follows:
+
+    (venv) % watch bash reporter.sh
