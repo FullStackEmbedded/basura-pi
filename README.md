@@ -39,13 +39,24 @@ For convenience purposes,the installation wheel for the Raspberry Pi is already 
       
 ## Usage
 
+### Configuration
+The frequency of fill state logging is configured in `settings.py`.
+The frequency of reporting to the server is configured as a constant at the top of `reporter.sh`.
+It should be noted that it may take several seconds to report a single fill state.
+Therefore it is suggested to set the frequency of the fill state logger in the order of magnitude of minutes, not seconds.
+
 ### Sensor Calibration
 First, the sensor needs to be calibrated for the trash can and receive a UUID.
 Run `calibration.py` interactively and follow the instructions.
 
     (venv) % python3 calibration.py
 
-### Starting the Logger Daemon
-Now the logger daemon can be started.
+### Starting the Logger
+Now the Logger can be started.
+Note that this does not automatically spawn a child process; instead, the process loops indefinitely.
 
     (venv) % python3 main.py
+
+The Reporter should also be executed similarly so that the fill states are reported and the log is truncated.
+
+    (venv) % ./reporter.sh

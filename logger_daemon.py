@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import uuid
 import time
 import datetime
@@ -37,6 +39,7 @@ class LoggerDaemon:
         while True:
             x = self.get_fill_state()
             self.write_to_log(x)
+            self.truncate_log()
             time.sleep(self.schedule_interval)
 
 
