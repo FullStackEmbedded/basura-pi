@@ -36,4 +36,16 @@ while read line; do
   i=$((i+1))
 done < $FILL_STATE_LOG
 
-
+# Delete Fill States which have been removed from Fill State Log from the
+# Reported Log
+echo Cleaning reported log...
+for uuid in $(tail -n +2 $REPORTED_LOG); do
+  delete=0
+  grep $uuid $FILL_STATE_LOG && \
+    echo Trash fill state still must be deleted from Fill State Log || \
+    delete=1
+  if [[ $delete -eq 1 ]]; then
+    echo Trash fill state $uuid will be deleted from Fill State Log.
+    grep -v $uuid $REPORTED_LOG > $REPORTED_LOG~ && mv $REPORTED_LOG~ $REPORTED_LOG
+  fi
+done
