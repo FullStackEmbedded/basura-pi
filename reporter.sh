@@ -5,6 +5,7 @@ REPORTED_LOG=log/reported-log.csv
 BASURA_SERVER=localhost:8000
 
 # Make sure Trash Can is registered with server
+echo Reporting Trash Cans to Server...
 for uuid in $(tail -n +2 $FILL_STATE_LOG | cut -d ';' -f 3 | sort -u); do
   http POST $BASURA_SERVER/trashcans/ id=$uuid
 done
@@ -13,6 +14,7 @@ done
 # By the way, this is *not* the right way to parse text, but we hacked it this
 # way to save time
 i=0
+echo Reporting Trash Events to Server...
 while read line; do
   success=0
   if [[ $i -gt 0 ]]; then  # Skip log header
