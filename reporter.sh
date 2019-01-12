@@ -3,7 +3,7 @@
 FILL_STATE_LOG=log/fill-state-log.csv
 REPORTED_LOG=log/reported-log.csv
 BASURA_SERVER=basura-server:8000
-FREQUENCY=5  # Seconds to wait before repeating report cycle
+FREQUENCY=60  # Seconds to wait before repeating report cycle
 
 while true; do
   # Make sure Trash Can is registered with server
