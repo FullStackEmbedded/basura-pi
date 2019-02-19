@@ -47,6 +47,17 @@ Run `calibration.py` interactively and follow the instructions.
 
     (venv) % sudo venv/bin/python calibration.py
 
+Afterwards, create the files needed by the Reporter and Logger:
+
+    (venv) % head -n 4 settings.py  # So that we know what files to make
+
+    LOG_DIR = "log/"
+    LOG_FILENAME = "fill-state-log.csv"
+    REP_FILENAME = "reported-log.csv"
+    (venv) % mkdir log
+    (venv) % touch log/{fill-state-log,reported-log}.csv
+    (venv) % echo 'uuid;time;trash_can_uuid;fill_state' > log/reported-log.csv
+
 ### Starting the Logger Manually
 Now the Logger can be started manually for a first test.
 Note that this does not automatically spawn a child process; instead, the process loops indefinitely.
