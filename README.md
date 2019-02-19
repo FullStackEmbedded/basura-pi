@@ -45,13 +45,13 @@ For convenience purposes,the installation wheel for the Raspberry Pi is already 
 First, the sensor needs to be calibrated for the trash can and receive a UUID.
 Run `calibration.py` interactively and follow the instructions.
 
-    (venv) % python3 calibration.py
+    (venv) % sudo venv/bin/python calibration.py
 
 ### Starting the Logger Manually
 Now the Logger can be started manually for a first test.
 Note that this does not automatically spawn a child process; instead, the process loops indefinitely.
 
-    (venv) % python3 main.py
+    (venv) % sudo venv/bin/python main.py
 
 ### Starting the Reporter Manually
 Before starting the Reporter, change the `BASURA_SERVER` variable to point to the right host and port that you want to communicate with.
@@ -59,7 +59,7 @@ If not changed, this will interact with `localhost:8000`.
 
 The Reporter is currently not a daemon but can be started as follows:
 
-    (venv) % watch bash reporter.sh
+    (venv) % bash reporter.sh
 
 ### Starting the Logger  on System Startup
 In order for the logger daemon to start automatically on system startup, the logger needs to be registered in *systemd*.
